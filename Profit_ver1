@@ -1,0 +1,8 @@
+function Data = Estimate_Profit(P,Cp,Ce,Cs,Q,X)
+    Revenue = min(Q,X)*P;
+    Cost1 = Q*Cp;
+    Cost2 = max(Q-X,0)*Ce;
+    Cost3 = max(X-Q,0)*Cs;
+    Profit = Revenue - (Cost1+Cost2+Cost3);
+    Data = [Revenue,Cost1,Cost2,Cost3,Profit];
+end
