@@ -1,0 +1,21 @@
+function Data = Estimate_Profit(P,Cp,Ce,Cs,Q)
+    Revenue = 0;
+    Cost1   = 0;
+    Cost2   = 0;
+    Cost3   = 0;
+    Profit  = 0;
+    for X = 1:1:2*Q
+        Revenue_round = min(Q,X)*P;
+        Cost1_round  = Q*Cp;
+        Cost2_round  = max(Q-X,0)*Ce;
+        Cost3_round  = max(X-Q,0)*Cs;
+        Profit_round = Revenue_round - (Cost1_round + Cost2_round + Cost3_round);
+        Revenue = Revenue + Revenue_round;
+        Cost1   = Cost1_round * Probability;
+        Cost2   = Cost2_round * Probability;
+        Cost3   = Cost3_round * Probability;
+        Profit  = Profit_round * Probability;
+    end
+    
+    Data = [Revenue,Cost1,Cost2,Cost3,Profit];
+end
